@@ -163,9 +163,9 @@ class redmine
   // public function addIssue($summary, $description)
   public function addIssueFromSimpleXML($issueXmlObj,$reporter=null)
   {
-    if( null !== $reporter ) {
-      $reporter = $this->checkUserExistence($reporter) ? $reporter : null; 
-    }
+//     if( null !== $reporter ) {
+//       $reporter = $this->checkUserExistence($reporter) ? $reporter : null; 
+//     }
 
     $op = $this->_request_xml('POST',"/issues.xml",$issueXmlObj->asXML(),0,$reporter);
     return $op;
@@ -176,10 +176,9 @@ class redmine
    */
   public function addIssueFromXMLString($XMLString,$reporter=null)
   {
-    if( null !== $reporter ) {
-      $reporter = $this->checkUserExistence($reporter) ? $reporter : null; 
-    }
-
+//     if( null !== $reporter ) {
+//       $reporter = $this->checkUserExistence($reporter) ? $reporter : null; 
+//     }
     $op = $this->_request_xml('POST',"/issues.xml",$XMLString,0,$reporter);
     return $op;
   }
@@ -190,9 +189,9 @@ class redmine
    */
   public function addIssueNoteFromSimpleXML($issueID,$issueXmlObj,$reporter=null)
   {
-    if( null !== $reporter ) {
-      $reporter = $this->checkUserExistence($reporter) ? $reporter : null; 
-    }
+//     if( null !== $reporter ) {
+//       $reporter = $this->checkUserExistence($reporter) ? $reporter : null; 
+//     }
 
     $op = $this->_request_xml('PUT',"/issues/{$issueID}.xml",$issueXmlObj->asXML(),0,$reporter);
     return $op;
@@ -377,7 +376,7 @@ class redmine
     if(!is_null($reporter))
     {
       $header[] = $XRedmineSwitchUser = "X-Redmine-Switch-User: {$reporter}";
-    } 
+    }  
 
     if ($method == 'PUT' || $method == 'POST') 
     {

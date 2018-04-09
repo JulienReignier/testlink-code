@@ -261,8 +261,7 @@ function write_execution(&$db,&$execSign,&$exec_data,&$issueTracker)
         if( isset($exec_data['createIssue']) ) {
           completeCreateIssue($execContext,$execSign);
           
-          $addIssueOp['createIssue'] = addIssue($db,$execContext,$issueTracker,
-                                                $execContext->addLinkToTL);
+          $addIssueOp['createIssue'] = addIssue($db, $execContext, $issueTracker, $execContext->addLinkToTL);
           $addIssueOp['type'] = 'createIssue';
         }  
         
@@ -580,7 +579,7 @@ function getBugsForExecutions(&$db,&$bug_interface,$execSet,$raw = null)
 /**
  *
  */
-function addIssue($dbHandler,$argsObj,$itsObj,$addLinkToTL)
+function addIssue($dbHandler,$argsObj,$itsObj,$addLinkToTL=false)
 {
   static $my;
 
@@ -691,7 +690,7 @@ function copyIssues(&$dbHandler,$source,$dest)
 /**
  *
  */
-function generateIssueText($dbHandler,$argsObj,$itsObj,$addLinkToTL) {
+function generateIssueText($dbHandler,$argsObj,$itsObj,$addLinkToTL=false) {
   $ret = new stdClass();
 
   $opOK = false;             

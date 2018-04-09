@@ -322,7 +322,7 @@ class redminerestInterface extends issueTrackerInterface
       $reporter = $opt->reporter;
     }  
 
-
+    
   	// Check mandatory info
   	if( !property_exists($this->cfg,'projectidentifier') ) {
   	  throw new exception(__METHOD__ . " project identifier is MANDATORY");
@@ -341,7 +341,7 @@ class redminerestInterface extends issueTrackerInterface
       // limit size to redmine max => 255 ?
       $issueXmlObj->addChild('subject', substr(htmlspecialchars($summary),0,255) );
       $issueXmlObj->addChild('description', htmlspecialchars($description));
-
+      
       // Got from XML Configuration
       // improvement
       $pid = (string)$this->cfg->projectidentifier;
@@ -407,11 +407,9 @@ class redminerestInterface extends issueTrackerInterface
 
         $xml = str_replace('</issue>', $cf . '</issue>', $xml);
       }
-
-      // $op = $this->APIClient->addIssueFromSimpleXML($issueXmlObj);
-      file_put_contents('/var/testlink/' . __CLASS__ . '.log', $xml);
+     
       $op = $this->APIClient->addIssueFromXMLString($xml,$reporter);
-
+  
       
       if(is_null($op)) {
         $msg = "Error Calling " . __CLASS__ . 
@@ -457,7 +455,7 @@ class redminerestInterface extends issueTrackerInterface
      {
        $msg = "REDMINE Add Note to Ticket FAILURE => " . $e->getMessage();
        tLog($msg, 'WARNING');
-       $ret = array('status_ok' => false, 'id' => -1, 'msg' => $msg . ' - serialized issue:' . serialize($issueXmlObj));
+       $ret = array('status_ok' => false, 'id' => -1, 'msg' => $msg . ' - serialized issue:' . ($issueXmlObj));
      }
      return $ret;
   }  
