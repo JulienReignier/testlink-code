@@ -82,7 +82,7 @@ Author : franciscom
                  <br />
                  <br />
                  <button style="display: none;" type="submit" 
-                         id="hidden-submit-button"></button>
+                         id="hidden-submit-button" onclick="document.forms['execSetResults'].submit();"></button>
 
                  {foreach key=kode item=ikval from=$gui->execStatusIcons}
                    {$in = $ikval.img}

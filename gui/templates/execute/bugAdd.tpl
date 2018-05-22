@@ -47,7 +47,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     {if $gui->user_action == 'create' || $gui->user_action == 'doCreate' }
       <p class="label">{$labels.bug_summary}(*)
         <input type="text" id="bug_summary" name="bug_summary" required value="{$gui->bug_summary}"
-               size="{#BUGSUMMARY_SIZE#}" maxlength="{$gui->issueTrackerCfg->bugSummaryMaxLength}" 
+               size="{#BUGSUMMARY_SIZE#}" maxlength="{$gui->issueTrackerCfg->bugSummaryMaxLength}"/>
       </p>
 
      {if $gui->issueTrackerMetaData != ''}
